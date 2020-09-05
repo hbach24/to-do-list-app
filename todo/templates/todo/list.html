@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<style>
+    .center-column{
+    width: 600px;
+    margin: 20px auto;
+    padding: 20 px;
+    background-color: mistyrose;
+    border-radius: 3px;
+    box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+    }
+
+    .item-row {
+    margin: 2px;
+    padding: 12px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 19px
+    box-shadow:  0px -1px 10px -4px rgba(0,0,0,0.75);
+    }
+
+    .input{
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+	}
+
+    .categorize{
+        width: 500px;
+        margin: 1px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 3px 1px 10px 0px rgba(0,0,0,0.75);
+    }
+
+    h3 {text-align: center}
+    form {text-align: center}
+    p {color: black}
+
+</style>
+
+
+<div class="center-column">
+<body style="background-color:light">
+    <br>
+<h3>My To-Do List</h3>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.title}}
+    <input class="btn btn-light" type="submit" name="Make Task">
+</form>
+</body>
+
+{% for task in todo %}
+    <div class="item-row">
+    <div class="categorize">
+
+        {% if task.done == True %}
+        <p><strike>{{task}}</strike></p>
+        <a class = "btn btn-light" href="{% url 'update_task' task.id %}">Edit</a>
+        <a class = "btn btn-light" href="{% url 'delete' task.id %}">Delete</a>
+        {% else %}
+        <p>{{task}}</p>
+        <a class = "btn btn-light" href="{% url 'update_task' task.id %}">Edit</a>
+        <a class = "btn btn-light" href="{% url 'delete' task.id %}">Delete</a>
+        {% endif %}
+
+    </div>
+</div>
+{% endfor %}
+</div>

@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<style>
+    .center-column{
+    width: 500px;
+    height: 150px;
+    margin: 100px auto;
+    background-color: white;
+    border-radius: 5px;
+
+    h4 {text-align: center}
+    }
+
+</style>
+
+<div class="center-column">
+<br>
+<body style="background-color:mistyrose"></body>
+<h4>Delete "<i><b>{{obj}}</b></i>"?</h4>
+
+
+
+<p> </p>
+<form method="POST" action="">
+    {% csrf_token %}
+    <input class = "btn btn-outline-secondary"  type="submit" name="Confirm">
+    <a class = "btn btn-outline-secondary" href="{% url 'list' %}" >Cancel</a>
+</form>
+    </div>
